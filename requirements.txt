@@ -3,3 +3,4 @@ colorthief
 Pillow
 spotipy
 gunicorn
+python-dotenv
