@@ -18,4 +18,4 @@ def detect_mood(image_path):
     else:
         return "neutral"
 
-print(detect_mood("./static/uploads/j.jpg"))
+#print(detect_mood("./static/uploads/j.jpg"))
