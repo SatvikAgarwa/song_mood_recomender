@@ -39,4 +39,4 @@ def get_mood_tracks(query, limit=10):
     results = sp.search(q=query, type='track', limit=limit, offset=offset)
     return [t['name'] + " - " + t['artists'][0]['name'] for t in results['tracks']['items']]
 
-print(get_mood_tracks("energetic"))
+# print(get_mood_tracks("energetic"))
