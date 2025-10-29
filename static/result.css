@@ -1,0 +1,85 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.result-container {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 2.5rem 3rem;
+    border-radius: 20px;
+    text-align: center;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.result-container h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.result-container h2 {
+    font-size: 1.4rem;
+    margin-bottom: 25px;
+}
+
+.mood {
+    color: #ffea00;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.songs-section {
+    text-align: left;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: rgba(255,255,255,0.15);
+    border-radius: 12px;
+}
+
+.songs-section h3 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #ffe;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 10px 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+li:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+
+.back-btn {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 10px 20px;
+    background-color: #ffb300;
+    color: #222;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.back-btn:hover {
+    background-color: #ffe066;
+}

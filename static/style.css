@@ -1,0 +1,74 @@
+/* Reset default margin/padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Body styling */
+body {
+  background: linear-gradient(135deg, #2a0845, #6441a5);
+  color: white;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Container box */
+.container {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2.5rem;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 400px;
+  backdrop-filter: blur(8px);
+}
+
+/* Heading */
+h1 {
+  margin-bottom: 1.8rem;
+  font-size: 1.6rem;
+  letter-spacing: 1px;
+}
+
+/* Labels */
+label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: 600;
+}
+
+/* Inputs */
+input[type="text"],
+input[type="file"] {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.6rem;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  font-size: 1rem;
+}
+
+/* Button */
+button {
+  margin-top: 1.8rem;
+  width: 100%;
+  padding: 0.7rem;
+  background: #ff7eb3;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #ff4f81;
+  transform: translateY(-2px);
+}

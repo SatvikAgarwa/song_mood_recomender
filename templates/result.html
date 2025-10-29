@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Mood Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='result.css') }}">
+</head>
+<body>
+    <div class="result-container">
+        <h1>🎧 Hey {{ name }}!</h1>
+        <h2>Your mood seems to be <span class="mood">{{ mood }}:</span> 😎</h2>
+
+        <div class="songs-section">
+            <h3>Recommended Songs for You</h3>
+            <ul>
+                {% for song in songs %}
+                    <li>🎵 {{ song }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <a href="/" class="back-btn">← Try Again</a>
+    </div>
+</body>
+</html>
