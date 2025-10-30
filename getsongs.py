@@ -4,8 +4,10 @@ from spotipy.oauth2 import SpotifyOAuth
 import os
 import random
 
+# Load environment variables
 load_dotenv()
 
+# ✅ Full Spotify scope
 scope = (
     "ugc-image-upload "
     "user-read-playback-state "
@@ -28,19 +30,42 @@ scope = (
     "user-read-playback-position"
 )
 
-# ✅ Explicitly pull credentials from environment
-sp = spotipy.Spotify(
-    auth_manager=SpotifyOAuth(
-        client_id=os.getenv("SPOTIPY_CLIENT_ID"),
-        client_secret=os.getenv("SPOTIPY_CLIENT_SECRET"),
-        redirect_uri=os.getenv("SPOTIPY_REDIRECT_URI"),
-        scope=scope,
-        open_browser=False,  # prevents trying to open a browser
-        cache_path=".spotipyoauthcache"  # reuse token once authorized
-    )
-)
+def get_spotify_client():
+    """
+    Create a Spotify client that works both locally and on Render.
+    - On Render: uses cache (no input, no browser)
+    - Locally: first-time auth opens browser and caches token
+    """
+    try:
+        return spotipy.Spotify(
+            auth_manager=SpotifyOAuth(
+                client_id=os.getenv("SPOTIPY_CLIENT_ID"),
+                client_secret=os.getenv("SPOTIPY_CLIENT_SECRET"),
+                redirect_uri=os.getenv("SPOTIPY_REDIRECT_URI"),
+                scope=scope,
+                open_browser=False,        # 🔥 prevents EOF error on Render
+                cache_path=".spotipyoauthcache"
+            )
+        )
+    except Exception as e:
+        print(f"⚠️ Spotify Auth Error: {e}")
+        return None
+
 
 def get_mood_tracks(query, limit=10):
-    offset = random.randint(0, 900)
-    results = sp.search(q=query, type='track', limit=limit, offset=offset)
-    return [t['name'] + " - " + t['artists'][0]['name'] for t in results['tracks']['items']]
+    """
+    Fetch random Spotify tracks for the detected mood.
+    """
+    sp = get_spotify_client()
+    if sp is None:
+        return ["Error: Unable to authenticate with Spotify."]
+
+    try:
+        offset = random.randint(0, 900)
+        results = sp.search(q=query, type='track', limit=limit, offset=offset)
+        return [
+            f"{t['name']} - {t['artists'][0]['name']}"
+            for t in results['tracks']['items']
+        ]
+    except Exception as e:
+        return [f"Error fetching tracks: {str(e)}"]
